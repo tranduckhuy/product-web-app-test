@@ -1,8 +1,6 @@
 package me.duchuy.productwebapp.controller;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
@@ -11,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 import me.duchuy.productwebapp.dao.ProductDAOImpl;
 import me.duchuy.productwebapp.model.Product;
 
@@ -46,27 +43,12 @@ public class FormProduct extends HttpServlet {
         Timestamp timeCreated = new Timestamp(currentTime);
         sdf.format(timeCreated);
 
-//        Part part = request.getPart("proImage");
-//        InputStream inputStream = part.getInputStream();
-//        InputStream articleImage = inputStream;
-
         // Image
-        Part productPart = request.getPart("proImage");
-        
-        String folderUpload = "/files";
-        String pathUploadFolder = request.getServletContext().getRealPath(folderUpload);
-        String fileName = Paths.get(productPart.getSubmittedFileName()).getFileName().toString();
-        
-        if (!Files.exists(Paths.get(pathUploadFolder))) {
-            Files.createDirectories(Paths.get(pathUploadFolder));
-        }
-        String urlImg = pathUploadFolder + "/" + fileName;
-        productPart.write(urlImg);
-        
-        String productInsert = folderUpload + "/" + fileName;
+        String imageURL = request.getParameter("proImage");
+        System.out.println("imageURL: " + imageURL);
         
         //
-        Product product = new Product((currentTime+1610) + "", proName, proDescription, productInsert, proCategory, timeCreated);
+        Product product = new Product((currentTime+1610) + "", proName, proDescription, imageURL, proCategory, timeCreated);
 
         ProductDAOImpl productDAO = new ProductDAOImpl();
 

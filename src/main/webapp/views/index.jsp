@@ -77,7 +77,7 @@
                 <div class="col-md-4">
                     <div class="card">
 
-                        <img src=".<%= product.getImage()%>" class="card-img-top" alt="Sản phẩm 1" style="width: 100%; height: 250px">
+                        <img src="<%= product.getImage()%>" class="card-img-top px-4 mt-3" alt="Sản phẩm 1" style="width: 100%; height: 270px">
                         <div class="card-body">
                             <h5 class="card-title"><%= product.getName()%></h5>
                             <p class="card-text"><%= product.getDescription()%></p>
