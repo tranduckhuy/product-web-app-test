@@ -117,7 +117,7 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public int getTotalNumArticle() {
+    public int getTotalNumProduct() {
         int total = 0;
 
         String query = "SELECT COUNT(*) AS total FROM product";

@@ -17,5 +17,5 @@ public interface ProductDAO {
     
     public int delete(String productId);
     
-    public int getTotalNumArticle();
+    public int getTotalNumProduct();
 }

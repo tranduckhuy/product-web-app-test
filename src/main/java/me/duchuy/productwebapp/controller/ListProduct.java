@@ -41,7 +41,7 @@ public class ListProduct extends HttpServlet {
         
         List<Product> listProduct = productDAO.getProducts(pageNum, 6);
         
-        int total = productDAO.getTotalNumArticle();
+        int total = productDAO.getTotalNumProduct();
         request.setAttribute("total", total);
         
         HttpSession session = request.getSession();
